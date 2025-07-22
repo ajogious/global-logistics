@@ -124,8 +124,7 @@ Mobile menu not working Ensure hamburger.js is correctly linked
 Form not submitting Replace your-form-id in Formspree action URL
 
 License 📜
-MIT License.
-See the LICENSE file for details.
+You can clone and use but do not claim the design and idea
 
 Credits 🙏
 Tailwind CSS — Styling framework

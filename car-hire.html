@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Car Hire | Global Logistics</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .navbar {
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .hamburger {
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .nav-menu {
+        transition: all 0.3s ease;
+      }
+
+      .form-input {
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+
+      .service-card {
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          z-index: 1000;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Wrapper -->
+    <div class="min-h-screen flex flex-col justify-between">
+      <!-- Header with Hamburger Menu -->
+      <header class="navbar fixed w-full bg-white shadow-md z-50">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+        >
+          <a
+            href="index.html"
+            class="text-2xl font-bold text-blue-600 flex items-center"
+          >
+            <i class="fas fa-shipping-fast mr-2"></i>
+            <span>GlobalLogistics</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="about.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              About
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="car-hire.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Car Hire
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="tourism.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Tourism
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="contact.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Contact
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </nav>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="md:hidden focus:outline-none hamburger" id="hamburger">
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="nav-menu md:hidden" id="navMenu">
+          <a
+            href="index.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Home</a
+          >
+          <a
+            href="car-hire.html"
+            class="block py-3 px-4 text-lg text-blue-600 bg-blue-50 w-full text-center transition duration-300"
+            >Car Hire</a
+          >
+          <a
+            href="tourism.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Tourism</a
+          >
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section text-white pt-32 pb-20 md:pt-40 md:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Premium Car Hire Services
+          </h1>
+          <p class="text-xl md:text-2xl max-w-3xl mx-auto">
+            Book your perfect vehicle for business or leisure travel
+          </p>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <!-- Two Column Layout -->
+          <div class="flex flex-col lg:flex-row gap-8 -mt-10">
+            <!-- Form Section -->
+            <div class="w-full lg:w-1/2">
+              <form
+                id="carHireForm"
+                action="https://formspree.io/f/your-form-id"
+                method="POST"
+                class="bg-white rounded-xl shadow-lg overflow-hidden"
+              >
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Booking Details</h2>
+                </div>
+
+                <div class="p-6 space-y-6">
+                  <!-- Personal Info Section -->
+                  <div>
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                      <i class="fas fa-user-circle mr-2 text-blue-600"></i>
+                      Personal Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >First Name*</label
+                        >
+                        <input
+                          type="text"
+                          name="firstName"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="John"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Last Name*</label
+                        >
+                        <input
+                          type="text"
+                          name="lastName"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="Doe"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Other Name</label
+                        >
+                        <input
+                          type="text"
+                          name="otherName"
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="(Optional)"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Phone Number*</label
+                        >
+                        <input
+                          type="tel"
+                          name="phone"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="+234 812 345 6789"
+                        />
+                      </div>
+
+                      <div class="md:col-span-2">
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Email Address*</label
+                        >
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Booking Details Section -->
+                  <div>
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                      <i class="fas fa-calendar-alt mr-2 text-blue-600"></i>
+                      Booking Details
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Pick-Up Date*</label
+                        >
+                        <input
+                          type="date"
+                          name="date"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Pick-Up Time*</label
+                        >
+                        <input
+                          type="time"
+                          name="time"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Car Type*</label
+                        >
+                        <select
+                          name="carType"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                          <option value="">Select Vehicle</option>
+                          <option value="Economy">
+                            Economy (Toyota Corolla)
+                          </option>
+                          <option value="Compact">Compact (Honda Civic)</option>
+                          <option value="SUV">SUV (Toyota RAV4)</option>
+                          <option value="Premium">
+                            Premium (Mercedes E-Class)
+                          </option>
+                          <option value="Luxury">Luxury (BMW 7 Series)</option>
+                          <option value="Minivan">
+                            Minivan (Toyota Sienna)
+                          </option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Rental Duration*</label
+                        >
+                        <select
+                          name="rentalDuration"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                          <option value="">Select Duration</option>
+                          <option value="Hourly">Hourly Rental</option>
+                          <option value="Daily">Daily Rental</option>
+                          <option value="Weekly">Weekly Rental</option>
+                          <option value="Monthly">Monthly Rental</option>
+                        </select>
+                      </div>
+
+                      <div class="md:col-span-2">
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Service Type*</label
+                        >
+                        <select
+                          name="serviceType"
+                          required
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                          <option value="">Select Service</option>
+                          <option value="City Transfer">City Transfer</option>
+                          <option value="Business Travel">
+                            Business Travel
+                          </option>
+                          <option value="Special Event">Special Event</option>
+                          <option value="Tourism Package">
+                            Tourism Package
+                          </option>
+                        </select>
+                      </div>
+
+                      <div class="md:col-span-2">
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Special Requests</label
+                        >
+                        <textarea
+                          name="specialRequests"
+                          rows="3"
+                          class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="Child seat, GPS, etc."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div>
+                    <button
+                      type="submit"
+                      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                      <i class="fas fa-paper-plane mr-2"></i> Submit Booking
+                      Request
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Service Options Section -->
+            <div class="w-full lg:w-1/2">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Our Services</h2>
+                </div>
+
+                <div class="p-6 space-y-6">
+                  <!-- Service 1 -->
+                  <div class="service-card bg-blue-50 rounded-lg p-6">
+                    <div class="flex items-start">
+                      <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-car text-blue-600 text-xl"></i>
+                      </div>
+                      <div>
+                        <h3 class="font-bold text-lg mb-2">City Car Rental</h3>
+                        <p class="text-gray-600">
+                          Flexible rental options for your urban transportation
+                          needs.
+                        </p>
+                        <div class="mt-3">
+                          <span class="font-semibold text-blue-600"
+                            >Custom packages available</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Service 2 -->
+                  <div class="service-card bg-blue-50 rounded-lg p-6">
+                    <div class="flex items-start">
+                      <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-suitcase text-blue-600 text-xl"></i>
+                      </div>
+                      <div>
+                        <h3 class="font-bold text-lg mb-2">Business Travel</h3>
+                        <p class="text-gray-600">
+                          Premium vehicles with professional drivers for
+                          corporate needs.
+                        </p>
+                        <div class="mt-3">
+                          <span class="font-semibold text-blue-600"
+                            >Custom packages available</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Service 3 -->
+                  <div class="service-card bg-blue-50 rounded-lg p-6">
+                    <div class="flex items-start">
+                      <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i
+                          class="fas fa-umbrella-beach text-blue-600 text-xl"
+                        ></i>
+                      </div>
+                      <div>
+                        <h3 class="font-bold text-lg mb-2">Tourism Packages</h3>
+                        <p class="text-gray-600">
+                          Complete travel packages including vehicle and guided
+                          tours.
+                        </p>
+                        <div class="mt-3">
+                          <span class="font-semibold text-blue-600"
+                            >Custom packages available</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Call to Action -->
+                  <div class="text-center">
+                    <a
+                      href="tourism.html"
+                      class="inline-block border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-medium py-2 px-6 rounded-full transition duration-300"
+                    >
+                      Explore Tourism Options
+                      <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Why Choose Us -->
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden mt-8">
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Why Choose Us</h2>
+                </div>
+
+                <div class="p-6 space-y-6">
+                  <div class="flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-check-circle text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold mb-1">24/7 Customer Support</h3>
+                      <p class="text-gray-600 text-sm">
+                        Our team is available round the clock to assist you with
+                        any queries or emergencies.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                      <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold mb-1">
+                        Full Insurance Coverage
+                      </h3>
+                      <p class="text-gray-600 text-sm">
+                        Comprehensive insurance included with every rental for
+                        your peace of mind.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                      <i
+                        class="fas fa-map-marked-alt text-blue-600 text-xl"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold mb-1">Nationwide Coverage</h3>
+                      <p class="text-gray-600 text-sm">
+                        Services available across multiple locations for your
+                        convenience.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Company Info -->
+            <div>
+              <h4 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-shipping-fast mr-2"></i>
+                <span>GlobalLogistics</span>
+              </h4>
+              <p class="text-gray-400">
+                Providing world-class car hire and tourism services since 2010.
+              </p>
+              <div class="flex mt-4 space-x-4">
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Quick Links</h5>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="index.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="car-hire.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Car Hire</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tourism.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Tourism</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Services</h5>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Short-Term Rentals</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Long-Term Leasing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Tour Packages</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Chauffeur Services</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Corporate Solutions</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Contact Us</h5>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                  <span>123 Business Ave, Downtown, City 10001</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt mr-3"></i>
+                  <span>+234 812 345 6789</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope mr-3"></i>
+                  <span>bookings@globallogistics.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-700 pt-8 text-center">
+            <p class="text-gray-400">
+              &copy; 2025 GlobalLogistics. All rights reserved. |
+              <a href="#" class="hover:text-white transition duration-300"
+                >Privacy Policy</a
+              >
+              |
+              <a href="#" class="hover:text-white transition duration-300"
+                >Terms of Service</a
+              >
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("navMenu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("#navMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Form Validation
+      const form = document.getElementById("carHireForm");
+      form.addEventListener("submit", function (e) {
+        const inputs = form.querySelectorAll("[required]");
+        let isValid = true;
+
+        for (const input of inputs) {
+          if (!input.value.trim()) {
+            input.classList.add("border-red-500");
+            isValid = false;
+          } else {
+            input.classList.remove("border-red-500");
+          }
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+          alert("Please fill in all required fields.");
+          return false;
+        }
+      });
+
+      // Remove error state when user starts typing
+      document.querySelectorAll(".form-input").forEach((input) => {
+        input.addEventListener("input", () => {
+          if (input.value.trim()) {
+            input.classList.remove("border-red-500");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

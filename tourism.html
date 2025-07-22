@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Tourism | Global Logistics</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .navbar {
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .hamburger {
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .nav-menu {
+        transition: all 0.3s ease;
+      }
+
+      .form-input {
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+
+      .tour-card {
+        transition: all 0.3s ease;
+      }
+
+      .tour-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1968&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          z-index: 1000;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Wrapper -->
+    <div class="min-h-screen flex flex-col justify-between">
+      <!-- Header with Hamburger Menu -->
+      <header class="navbar fixed w-full bg-white shadow-md z-50">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+        >
+          <a
+            href="index.html"
+            class="text-2xl font-bold text-blue-600 flex items-center"
+          >
+            <i class="fas fa-shipping-fast mr-2"></i>
+            <span>GlobalLogistics</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="about.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              About
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="car-hire.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Car Hire
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="tourism.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Tourism
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="contact.html"
+              class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 relative group"
+            >
+              Contact
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </nav>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="md:hidden focus:outline-none hamburger" id="hamburger">
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-gray-800 my-1.5 transition-all duration-300"
+            ></div>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="nav-menu md:hidden" id="navMenu">
+          <a
+            href="index.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >About</a
+          >
+          <a
+            href="car-hire.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Car Hire</a
+          >
+          <a
+            href="tourism.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Tourism</a
+          >
+          <a
+            href="contact.html"
+            class="block py-3 px-4 text-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 w-full text-center transition duration-300"
+            >Contact</a
+          >
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section text-white pt-32 pb-20 md:pt-40 md:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Explore Amazing Destinations
+          </h1>
+          <p class="text-xl md:text-2xl max-w-3xl mx-auto">
+            Discover the world with our exclusive tourism packages
+          </p>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <!-- Popular Destinations -->
+          <section class="py-12">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl font-bold mb-3">Popular Destinations</h2>
+              <p class="text-gray-600 max-w-2xl mx-auto">
+                Explore our most sought-after travel experiences
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Destination 1 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Cape Town, South Africa"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-orange-500 text-xs px-2 py-1 rounded-md"
+                      >Africa</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">
+                    Cape Town, South Africa
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Discover stunning landscapes, vibrant culture, and
+                    incredible wildlife in this coastal metropolis.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <span class="text-gray-600 ml-2 text-sm">4.2 (76)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $1,499</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Cape Town, South Africa')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destination 2 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
+                    alt="Santorini, Greece"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-blue-600 text-xs px-2 py-1 rounded-md"
+                      >Europe</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">Santorini, Greece</h3>
+                  <p class="text-gray-600 mb-4">
+                    Experience the iconic white-washed buildings and
+                    breathtaking sunsets of this Greek island paradise.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <span class="text-gray-600 ml-2 text-sm">4.7 (128)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $1,299</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Santorini, Greece')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destination 3 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Kyoto, Japan"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-green-600 text-xs px-2 py-1 rounded-md"
+                      >Asia</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">Kyoto, Japan</h3>
+                  <p class="text-gray-600 mb-4">
+                    Immerse yourself in traditional Japanese culture with
+                    ancient temples, tea ceremonies, and cherry blossoms.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <span class="text-gray-600 ml-2 text-sm">5.0 (94)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $1,799</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Kyoto, Japan')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destination 4 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Bora Bora, French Polynesia"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-purple-600 text-xs px-2 py-1 rounded-md"
+                      >Oceania</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">
+                    Bora Bora, French Polynesia
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Experience ultimate luxury in this tropical paradise with
+                    crystal-clear waters and overwater bungalows.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <span class="text-gray-600 ml-2 text-sm">5.0 (62)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $2,499</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Bora Bora, French Polynesia')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destination 5 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
+                    alt="Machu Picchu, Peru"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-red-600 text-xs px-2 py-1 rounded-md"
+                      >South America</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">Machu Picchu, Peru</h3>
+                  <p class="text-gray-600 mb-4">
+                    Explore the ancient Inca citadel nestled high in the Andes
+                    Mountains, one of the New Seven Wonders of the World.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <span class="text-gray-600 ml-2 text-sm">4.8 (105)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $1,599</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Machu Picchu, Peru')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destination 6 -->
+              <div
+                class="tour-card bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Obudu Mountain Resort"
+                    class="w-full h-full object-cover transition duration-500 hover:scale-110"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  ></div>
+                  <div class="absolute bottom-4 left-4 text-white">
+                    <span class="bg-blue-600 text-xs px-2 py-1 rounded-md"
+                      >Nigeria</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-xl mb-2">Obudu Mountain Resort</h3>
+                  <p class="text-gray-600 mb-4">
+                    A breathtaking experience on the hills of Cross River,
+                    featuring a cable car ride with spectacular views.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center text-yellow-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <span class="text-gray-600 ml-2 text-sm">4.0 (58)</span>
+                    </div>
+                    <span class="font-bold text-blue-600">From $799</span>
+                  </div>
+                  <button
+                    onclick="openBooking('Obudu Mountain Resort')"
+                    class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300"
+                  >
+                    Book Tour
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-12">
+              <a
+                href="#"
+                class="inline-block border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-medium py-3 px-8 rounded-full transition duration-300"
+              >
+                View All Destinations <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </section>
+
+          <!-- Testimonials Section -->
+          <section class="py-12 bg-gray-50 rounded-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold mb-3">What Our Travelers Say</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                  Hear from people who have experienced our tours
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/32.jpg"
+                        alt="Sarah Johnson"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h5 class="font-bold">Sarah Johnson</h5>
+                      <p class="text-gray-500 text-sm">Japan Tour</p>
+                    </div>
+                  </div>
+                  <div class="flex mb-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    "The Kyoto tour was absolutely magical. Our guide was so
+                    knowledgeable and the itinerary was perfect. Can't wait to
+                    book another trip!"
+                  </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/45.jpg"
+                        alt="Michael Chen"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h5 class="font-bold">Michael Chen</h5>
+                      <p class="text-gray-500 text-sm">South Africa Tour</p>
+                    </div>
+                  </div>
+                  <div class="flex mb-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    "Cape Town exceeded all expectations. The tour organization
+                    was flawless and we got to experience so much in just one
+                    week."
+                  </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/68.jpg"
+                        alt="Emma Rodriguez"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h5 class="font-bold">Emma Rodriguez</h5>
+                      <p class="text-gray-500 text-sm">Greece Tour</p>
+                    </div>
+                  </div>
+                  <div class="flex mb-2 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-gray-700">
+                    "Santorini was like a dream! The hotel selection was perfect
+                    and the sunset cruise was the highlight of our trip. Highly
+                    recommend!"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Company Info -->
+            <div>
+              <h4 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-shipping-fast mr-2"></i>
+                <span>GlobalLogistics</span>
+              </h4>
+              <p class="text-gray-400">
+                Providing world-class logistics and travel services since 2010.
+              </p>
+              <div class="flex mt-4 space-x-4">
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Quick Links</h5>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="index.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="car-hire.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Car Hire</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tourism.html"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Tourism</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Tour Services</h5>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Group Tours</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Private Tours</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Adventure Travel</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Luxury Vacations</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-400 hover:text-white transition duration-300"
+                    >Cultural Experiences</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <h5 class="font-bold text-lg mb-4">Contact Us</h5>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                  <span>123 Business Ave, Downtown, City 10001</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt mr-3"></i>
+                  <span>+234 812 345 6789</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope mr-3"></i>
+                  <span>tours@globallogistics.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-700 pt-8 text-center">
+            <p class="text-gray-400">
+              &copy; 2025 GlobalLogistics. All rights reserved. |
+              <a href="#" class="hover:text-white transition duration-300"
+                >Privacy Policy</a
+              >
+              |
+              <a href="#" class="hover:text-white transition duration-300"
+                >Terms of Service</a
+              >
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Booking Modal -->
+    <div
+      id="bookingModal"
+      class="fixed inset-0 z-50 bg-black bg-opacity-60 overflow-y-auto hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-lg w-full max-w-md mx-auto my-8 relative"
+      >
+        <!-- Sticky Close Button & Header -->
+        <div
+          class="flex justify-between items-center border-b px-4 py-3 sticky top-0 bg-white z-10"
+        >
+          <h3 class="text-2xl font-bold text-blue-600">Tour Booking Form</h3>
+          <button
+            onclick="closeModal()"
+            class="text-gray-500 hover:text-gray-700 text-xl"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Scrollable Form Content -->
+        <div class="p-4">
+          <form
+            id="tourBookingForm"
+            action="https://formspree.io/f/your-form-id"
+            method="POST"
+            class="space-y-4"
+          >
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Destination</label
+              >
+              <input
+                type="text"
+                name="destination"
+                id="destinationInput"
+                readonly
+                class="w-full bg-gray-100 border border-gray-300 px-4 py-3 rounded-lg form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Full Name*</label
+              >
+              <input
+                type="text"
+                name="fullName"
+                required
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Email Address*</label
+              >
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Phone Number*</label
+              >
+              <input
+                type="tel"
+                name="phone"
+                required
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Number of Travelers*</label
+              >
+              <select
+                name="travelers"
+                required
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+              >
+                <option value="">Select</option>
+                <option value="1">1 Traveler</option>
+                <option value="2">2 Travelers</option>
+                <option value="3">3 Travelers</option>
+                <option value="4">4 Travelers</option>
+                <option value="5+">5+ Travelers</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Preferred Date*</label
+              >
+              <input
+                type="date"
+                name="date"
+                required
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Special Requests</label
+              >
+              <textarea
+                name="specialRequests"
+                rows="3"
+                class="w-full border border-gray-300 px-4 py-3 rounded-lg form-input"
+                placeholder="Dietary restrictions, accessibility needs, etc."
+              ></textarea>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                <i class="fas fa-paper-plane mr-2"></i> Submit Booking Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("navMenu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("#navMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Modal Functions
+      function openBooking(destinationName) {
+        document.getElementById("destinationInput").value = destinationName;
+        document.getElementById("bookingModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("bookingModal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // Form Validation
+      const form = document.getElementById("tourBookingForm");
+      form.addEventListener("submit", function (e) {
+        const inputs = form.querySelectorAll("[required]");
+        let isValid = true;
+
+        for (const input of inputs) {
+          if (!input.value.trim()) {
+            input.classList.add("border-red-500");
+            isValid = false;
+          } else {
+            input.classList.remove("border-red-500");
+          }
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+          alert("Please fill in all required fields.");
+          return false;
+        }
+      });
+
+      // Remove error state when user starts typing
+      document.querySelectorAll(".form-input").forEach((input) => {
+        input.addEventListener("input", () => {
+          if (input.value.trim()) {
+            input.classList.remove("border-red-500");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

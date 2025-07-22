@@ -91,6 +91,15 @@
     </style>
   </head>
   <body class="bg-gray-100 text-gray-800">
+    <!-- Loading Spinner (shown while page loads) -->
+    <div
+      id="loading-spinner"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-300"
+    >
+      <div
+        class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600"
+      ></div>
+    </div>
     <!-- Wrapper -->
     <div class="min-h-screen flex flex-col justify-between">
       <!-- Header with Hamburger Menu -->
@@ -679,6 +688,33 @@
         } else {
           navbar.classList.remove("scrolled");
         }
+      });
+
+      // Get current page filename (e.g., "index.html")
+      const currentPage =
+        window.location.pathname.split("/").pop() || "index.html";
+
+      // Highlight active link in desktop nav
+      document.querySelectorAll("nav a").forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.replace("text-gray-700", "text-blue-600");
+          link.querySelector("span").classList.replace("w-0", "w-full");
+        }
+      });
+
+      // Highlight active link in mobile nav
+      document.querySelectorAll("#navMenu a").forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("text-blue-600", "bg-blue-50");
+        }
+      });
+
+      window.addEventListener("load", function () {
+        const spinner = document.getElementById("loading-spinner");
+        // Fade out spinner
+        spinner.style.opacity = "0";
+        // Remove spinner from DOM after fade out
+        setTimeout(() => spinner.remove(), 300);
       });
     </script>
   </body>

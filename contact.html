@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us | Global Logistics</title>
+    <title>Contact Us | Global Logistics</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -48,26 +48,31 @@
         transition: all 0.3s ease;
       }
 
+      .form-input {
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
       .hero-section {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-          url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+          url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
         background-size: cover;
         background-position: center;
       }
 
-      .timeline-item:not(:last-child)::after {
-        content: "";
-        position: absolute;
-        left: 7px;
-        top: 24px;
-        height: 100%;
-        width: 2px;
-        background: #3b82f6;
-      }
-
-      .team-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      #map {
+        height: 400px;
+        width: 100%;
+        border-radius: 12px;
       }
 
       @media (max-width: 768px) {
@@ -86,6 +91,10 @@
 
         .nav-menu.active {
           left: 0;
+        }
+
+        #map {
+          height: 300px;
         }
       }
     </style>
@@ -203,9 +212,9 @@
       <!-- Hero Section -->
       <section class="hero-section text-white pt-32 pb-20 md:pt-40 md:pb-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Story</h1>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
           <p class="text-xl md:text-2xl max-w-3xl mx-auto">
-            Delivering excellence in logistics and travel since 2010
+            We're here to help with all your logistics and travel needs
           </p>
         </div>
       </section>
@@ -213,281 +222,225 @@
       <!-- Main Content -->
       <main class="relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-          <!-- About Section -->
-          <section class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
-            <div class="p-8 md:p-12">
-              <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/2">
-                  <h2 class="text-3xl font-bold mb-6 text-gray-800">
-                    Who We Are
-                  </h2>
-                  <p class="text-gray-600 mb-6">
-                    GlobalLogistics is a premier provider of integrated
-                    logistics and travel solutions, serving clients across
-                    multiple continents. Founded in 2010, we've grown from a
-                    small local operation to an international leader in
-                    transportation services.
-                  </p>
-                  <p class="text-gray-600 mb-6">
-                    Our mission is to simplify global mobility through
-                    innovative solutions, exceptional service, and reliable
-                    operations. We pride ourselves on building lasting
-                    relationships with our clients by consistently delivering
-                    beyond expectations.
-                  </p>
-                  <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                    <h3
-                      class="font-bold text-lg mb-3 text-blue-600 flex items-center"
+          <!-- Two Column Layout -->
+          <div class="flex flex-col lg:flex-row gap-12 -mt-10">
+            <!-- Contact Form -->
+            <div class="w-full lg:w-1/2">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Send Us a Message</h2>
+                </div>
+
+                <form
+                  id="contactForm"
+                  action="https://formspree.io/f/your-form-id"
+                  method="POST"
+                  class="p-6 space-y-6"
+                >
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >First Name*</label
+                      >
+                      <input
+                        type="text"
+                        name="firstName"
+                        required
+                        class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="John"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Last Name*</label
+                      >
+                      <input
+                        type="text"
+                        name="lastName"
+                        required
+                        class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email Address*</label
                     >
-                      <i class="fas fa-bullseye mr-2"></i> Our Vision
-                    </h3>
-                    <p class="text-gray-700">
-                      To be the most trusted global partner for seamless
-                      logistics and travel experiences, connecting people and
-                      businesses across borders.
-                    </p>
-                  </div>
-                </div>
-                <div class="md:w-1/2">
-                  <img
-                    src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
-                    alt="Our Team"
-                    class="w-full h-auto rounded-lg shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Stats Section -->
-          <section
-            class="bg-blue-600 text-white rounded-xl shadow-lg overflow-hidden mb-12"
-          >
-            <div
-              class="p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-            >
-              <div>
-                <div class="text-4xl font-bold mb-2">12+</div>
-                <div class="text-sm uppercase tracking-wider">
-                  Years Experience
-                </div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold mb-2">5,000+</div>
-                <div class="text-sm uppercase tracking-wider">
-                  Happy Clients
-                </div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold mb-2">24/7</div>
-                <div class="text-sm uppercase tracking-wider">
-                  Customer Support
-                </div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold mb-2">15+</div>
-                <div class="text-sm uppercase tracking-wider">
-                  Countries Served
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Timeline Section -->
-          <section class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
-            <div class="p-8 md:p-12">
-              <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
-                Our Journey
-              </h2>
-
-              <div class="space-y-8 relative">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item relative pl-8">
-                  <div
-                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10"
-                  ></div>
-                  <div class="bg-blue-50 p-6 rounded-lg">
-                    <div class="font-bold text-blue-600 mb-1">2010</div>
-                    <h3 class="font-bold text-lg mb-2">Company Founded</h3>
-                    <p class="text-gray-600">
-                      Established in Lagos with just 3 vehicles, focusing on
-                      local logistics and airport transfers.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item relative pl-8">
-                  <div
-                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10"
-                  ></div>
-                  <div class="bg-blue-50 p-6 rounded-lg">
-                    <div class="font-bold text-blue-600 mb-1">2014</div>
-                    <h3 class="font-bold text-lg mb-2">Regional Expansion</h3>
-                    <p class="text-gray-600">
-                      Expanded operations to 5 major Nigerian cities and
-                      launched our tourism division.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item relative pl-8">
-                  <div
-                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10"
-                  ></div>
-                  <div class="bg-blue-50 p-6 rounded-lg">
-                    <div class="font-bold text-blue-600 mb-1">2018</div>
-                    <h3 class="font-bold text-lg mb-2">
-                      International Presence
-                    </h3>
-                    <p class="text-gray-600">
-                      Established partnerships in 3 African countries and
-                      introduced luxury fleet services.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item relative pl-8">
-                  <div
-                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-blue-100 z-10"
-                  ></div>
-                  <div class="bg-blue-50 p-6 rounded-lg">
-                    <div class="font-bold text-blue-600 mb-1">2022</div>
-                    <h3 class="font-bold text-lg mb-2">
-                      Digital Transformation
-                    </h3>
-                    <p class="text-gray-600">
-                      Launched our mobile app and online booking platform,
-                      serving clients in 15 countries.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Team Section -->
-          <section class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="p-8 md:p-12">
-              <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
-                Meet Our Leadership
-              </h2>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Team Member 1 -->
-                <div
-                  class="team-card bg-white border border-gray-200 rounded-lg overflow-hidden transition duration-300"
-                >
-                  <div class="relative h-64 overflow-hidden">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/32.jpg"
-                      alt="CEO"
-                      class="w-full h-full object-cover"
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="your@email.com"
                     />
                   </div>
-                  <div class="p-6">
-                    <h3 class="font-bold text-xl mb-1">David Johnson</h3>
-                    <p class="text-blue-600 font-medium mb-3">Founder & CEO</p>
-                    <p class="text-gray-600 text-sm mb-4">
-                      With over 20 years in the logistics industry, David
-                      founded GlobalLogistics to revolutionize African
-                      transportation services.
-                    </p>
-                    <div class="flex space-x-3">
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-linkedin-in"></i>
-                      </a>
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-twitter"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
 
-                <!-- Team Member 2 -->
-                <div
-                  class="team-card bg-white border border-gray-200 rounded-lg overflow-hidden transition duration-300"
-                >
-                  <div class="relative h-64 overflow-hidden">
-                    <img
-                      src="https://randomuser.me/api/portraits/women/44.jpg"
-                      alt="COO"
-                      class="w-full h-full object-cover"
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="tel"
+                      name="phone"
+                      class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="+234 812 345 6789"
                     />
                   </div>
-                  <div class="p-6">
-                    <h3 class="font-bold text-xl mb-1">Amina Mohammed</h3>
-                    <p class="text-blue-600 font-medium mb-3">
-                      Chief Operations Officer
-                    </p>
-                    <p class="text-gray-600 text-sm mb-4">
-                      Amina brings 15 years of operational excellence, ensuring
-                      seamless service delivery across all our locations.
-                    </p>
-                    <div class="flex space-x-3">
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-linkedin-in"></i>
-                      </a>
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-twitter"></i>
-                      </a>
-                    </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Subject*</label
+                    >
+                    <select
+                      name="subject"
+                      required
+                      class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                      <option value="Car Hire">Car Hire Services</option>
+                      <option value="Tourism">Tourism Packages</option>
+                      <option value="Logistics">Logistics Services</option>
+                      <option value="Feedback">Feedback</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Message*</label
+                    >
+                    <textarea
+                      name="message"
+                      rows="5"
+                      required
+                      class="w-full form-input border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="How can we help you?"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <button
+                      type="submit"
+                      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                      <i class="fas fa-paper-plane mr-2"></i> Send Message
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="w-full lg:w-1/2 space-y-8">
+              <!-- Contact Cards -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="contact-card bg-white p-6 rounded-xl shadow-md border border-gray-100 transition duration-300"
+                >
+                  <div
+                    class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                  </div>
+                  <h3 class="font-bold text-lg mb-2">Our Location</h3>
+                  <p class="text-gray-600">
+                    123 Business Avenue<br />
+                    Victoria Island<br />
+                    Lagos, Nigeria
+                  </p>
                 </div>
 
-                <!-- Team Member 3 -->
                 <div
-                  class="team-card bg-white border border-gray-200 rounded-lg overflow-hidden transition duration-300"
+                  class="contact-card bg-white p-6 rounded-xl shadow-md border border-gray-100 transition duration-300"
                 >
-                  <div class="relative h-64 overflow-hidden">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/67.jpg"
-                      alt="CTO"
-                      class="w-full h-full object-cover"
-                    />
+                  <div
+                    class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-phone-alt text-blue-600 text-xl"></i>
                   </div>
-                  <div class="p-6">
-                    <h3 class="font-bold text-xl mb-1">James Okafor</h3>
-                    <p class="text-blue-600 font-medium mb-3">
-                      Chief Technology Officer
-                    </p>
-                    <p class="text-gray-600 text-sm mb-4">
-                      James leads our digital transformation, developing
-                      innovative solutions to enhance customer experiences.
-                    </p>
-                    <div class="flex space-x-3">
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-linkedin-in"></i>
-                      </a>
-                      <a
-                        href="#"
-                        class="text-gray-400 hover:text-blue-600 transition"
-                      >
-                        <i class="fab fa-twitter"></i>
-                      </a>
-                    </div>
+                  <h3 class="font-bold text-lg mb-2">Call Us</h3>
+                  <p class="text-gray-600">
+                    +234 812 345 6789<br />
+                    +234 908 765 4321<br />
+                    Mon-Fri: 8am - 6pm
+                  </p>
+                </div>
+
+                <div
+                  class="contact-card bg-white p-6 rounded-xl shadow-md border border-gray-100 transition duration-300"
+                >
+                  <div
+                    class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-envelope text-blue-600 text-xl"></i>
                   </div>
+                  <h3 class="font-bold text-lg mb-2">Email Us</h3>
+                  <p class="text-gray-600">
+                    info@globallogistics.com<br />
+                    support@globallogistics.com<br />
+                    bookings@globallogistics.com
+                  </p>
+                </div>
+
+                <div
+                  class="contact-card bg-white p-6 rounded-xl shadow-md border border-gray-100 transition duration-300"
+                >
+                  <div
+                    class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-headset text-blue-600 text-xl"></i>
+                  </div>
+                  <h3 class="font-bold text-lg mb-2">Customer Support</h3>
+                  <p class="text-gray-600">
+                    24/7 Emergency Support<br />
+                    WhatsApp: +234 812 345 6789<br />
+                    Live Chat Available
+                  </p>
+                </div>
+              </div>
+
+              <!-- Map -->
+              <!-- <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Our Location</h2>
+                </div>
+                <div id="map" class="bg-gray-200"></div>
+              </div> -->
+
+              <!-- Business Hours -->
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-blue-600 text-white px-6 py-4">
+                  <h2 class="text-xl font-bold">Business Hours</h2>
+                </div>
+                <div class="p-6">
+                  <ul class="space-y-3">
+                    <li
+                      class="flex justify-between border-b border-gray-100 pb-2"
+                    >
+                      <span class="font-medium">Monday - Friday</span>
+                      <span>8:00 AM - 6:00 PM</span>
+                    </li>
+                    <li
+                      class="flex justify-between border-b border-gray-100 pb-2"
+                    >
+                      <span class="font-medium">Saturday</span>
+                      <span>9:00 AM - 4:00 PM</span>
+                    </li>
+                    <li class="flex justify-between">
+                      <span class="font-medium">Sunday</span>
+                      <span>Emergency Only</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         </div>
       </main>
 
@@ -622,7 +575,7 @@
               <ul class="space-y-3 text-gray-400">
                 <li class="flex items-start">
                   <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                  <span>123 Business Ave, Downtown, City 10001</span>
+                  <span>123 Business Ave, Victoria Island, Lagos</span>
                 </li>
                 <li class="flex items-center">
                   <i class="fas fa-phone-alt mr-3"></i>
@@ -680,6 +633,141 @@
           navbar.classList.remove("scrolled");
         }
       });
+
+      // Initialize Google Map
+      function initMap() {
+        // Lagos coordinates
+        const lagos = { lat: 6.5244, lng: 3.3792 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 14,
+          center: lagos,
+          styles: [
+            {
+              featureType: "administrative",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  color: "#444444",
+                },
+              ],
+            },
+            {
+              featureType: "landscape",
+              elementType: "all",
+              stylers: [
+                {
+                  color: "#f2f2f2",
+                },
+              ],
+            },
+            {
+              featureType: "poi",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road",
+              elementType: "all",
+              stylers: [
+                {
+                  saturation: -100,
+                },
+                {
+                  lightness: 45,
+                },
+              ],
+            },
+            {
+              featureType: "road.highway",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "simplified",
+                },
+              ],
+            },
+            {
+              featureType: "road.arterial",
+              elementType: "labels.icon",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "transit",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "water",
+              elementType: "all",
+              stylers: [
+                {
+                  color: "#46bcec",
+                },
+                {
+                  visibility: "on",
+                },
+              ],
+            },
+          ],
+        });
+
+        // Add marker
+        new google.maps.Marker({
+          position: lagos,
+          map: map,
+          title: "GlobalLogistics Headquarters",
+        });
+      }
+
+      // Form Validation
+      const form = document.getElementById("contactForm");
+      form.addEventListener("submit", function (e) {
+        const inputs = form.querySelectorAll("[required]");
+        let isValid = true;
+
+        for (const input of inputs) {
+          if (!input.value.trim()) {
+            input.classList.add("border-red-500");
+            isValid = false;
+          } else {
+            input.classList.remove("border-red-500");
+          }
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+          alert("Please fill in all required fields.");
+          return false;
+        }
+      });
+
+      // Remove error state when user starts typing
+      document.querySelectorAll(".form-input").forEach((input) => {
+        input.addEventListener("input", () => {
+          if (input.value.trim()) {
+            input.classList.remove("border-red-500");
+          }
+        });
+      });
     </script>
+
+    <!-- Google Maps API (replace with your API key) -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    ></script>
   </body>
 </html>
